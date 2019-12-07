@@ -1,0 +1,1 @@
+package microservices.msscbreweryclient.web.client;
