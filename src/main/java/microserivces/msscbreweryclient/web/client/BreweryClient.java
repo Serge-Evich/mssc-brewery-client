@@ -3,9 +3,11 @@ package microserivces.msscbreweryclient.web.client;
 import microserivces.msscbreweryclient.web.model.BeerDto;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
 import java.util.UUID;
 
 @Component
@@ -24,6 +26,22 @@ public class BreweryClient {
     }
 
     public BeerDto getById(UUID id) {
-        return restTemplate.getForObject(apiHost + BEER_PATH_V1 + id, BeerDto.class);
+        return restTemplate.getForObject(getUrl() + id, BeerDto.class);
+    }
+
+    private String getUrl() {
+        return apiHost + BEER_PATH_V1;
+    }
+
+    public URI create(BeerDto beerDto) {
+        return restTemplate.postForLocation(getUrl(), beerDto);
+    }
+
+    public void update(UUID id, BeerDto beerDto) {
+        restTemplate.put(getUrl() + id, beerDto);
+    }
+
+    public void delete(UUID id) {
+        restTemplate.delete(getUrl() + id);
     }
 }
