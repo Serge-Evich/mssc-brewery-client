@@ -11,14 +11,14 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class BreweryClientTest {
+class BeerBreweryClientTest {
 
     @Autowired
-    private BreweryClient breweryClient;
+    private BeerBreweryClient beerBreweryClient;
 
     @Test
     void getById() {
-        BeerDto beerDto = breweryClient.getById(UUID.randomUUID());
+        BeerDto beerDto = beerBreweryClient.getById(UUID.randomUUID());
         assertThat(beerDto).isNotNull();
     }
 
@@ -29,7 +29,7 @@ class BreweryClientTest {
                 .beerStyle("Beer style")
                 .build();
 
-        URI beerLocation = breweryClient.create(beerDto);
+        URI beerLocation = beerBreweryClient.create(beerDto);
 
         assertThat(beerLocation).isNotNull();
     }
@@ -42,11 +42,11 @@ class BreweryClientTest {
                 .upc(321L)
                 .build();
 
-        breweryClient.update(UUID.randomUUID(), beerDto);
+        beerBreweryClient.update(UUID.randomUUID(), beerDto);
     }
 
     @Test
     void delete() {
-        breweryClient.delete(UUID.randomUUID());
+        beerBreweryClient.delete(UUID.randomUUID());
     }
 }

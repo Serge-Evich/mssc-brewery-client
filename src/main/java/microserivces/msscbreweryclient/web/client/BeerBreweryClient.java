@@ -12,12 +12,12 @@ import java.util.UUID;
 
 @Component
 @ConfigurationProperties(value = "mssc.brewery.client", ignoreUnknownFields = false)
-public class BreweryClient {
+public class BeerBreweryClient {
     public final String BEER_PATH_V1 = "/api/v1/beer/";
     private String apiHost;
     private final RestTemplate restTemplate;
 
-    public BreweryClient(RestTemplateBuilder restTemplateBuilder) {
+    public BeerBreweryClient(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 
