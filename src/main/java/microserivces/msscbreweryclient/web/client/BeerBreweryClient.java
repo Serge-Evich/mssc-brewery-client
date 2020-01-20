@@ -3,7 +3,6 @@ package microserivces.msscbreweryclient.web.client;
 import microserivces.msscbreweryclient.web.model.BeerDto;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
